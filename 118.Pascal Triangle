@@ -17,6 +17,97 @@ Example 2:
 Input: numRows = 1
 Output: [[1]]
 
+
+//problem variant : 1
+
+public class Main
+{
+	public static void main(String[] args) {
+		int r = 5, c=3;
+		
+		int ans = pascalTriangle(r, c);
+		System.out.println(ans);
+		
+		
+	}
+	
+	
+	public static int pascalTriangle(int r, int c) {
+        int element = (int) nCr(r - 1, c - 1);
+        return element;
+    }
+    
+	public static long nCr(int n,int r){
+	    long res =1;
+	    
+	    for(int i=0;i<r;i++){
+	        res = res * (n-i);
+	        res = res / (i+1);
+	    }
+	    return res;
+	}
+}
+
+//problem variant : 2
+
+public class Main
+{
+	public static void main(String[] args) {
+		int n=5;
+		
+		pascalTriangle(n);
+		
+		
+	}
+	
+	
+	public static void pascalTriangle(int n) {
+        for(int c=1;c<=n;c++){
+            System.out.print(nCr(n - 1, c - 1) + " ");
+        }
+        
+    }
+    
+	public static long nCr(int n,int r){
+	    long res =1;
+	    
+	    for(int i=0;i<r;i++){
+	        res = res * (n-i);
+	        res = res / (i+1);
+	    }
+	    return res;
+	}
+}
+
+//optimal 
+
+import java.util.*;
+
+public class Pascal {
+
+    static void pascalTriangle(int n) {
+        long ans = 1;
+        System.out.print(ans + " "); // printing 1st element
+
+        // Printing the rest of the part:
+        for (int i = 1; i < n; i++) {
+            ans = ans * (n - i);
+            ans = ans / i;
+            System.out.print(ans + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int n = 5;
+        pascalTriangle(n);
+    }
+}
+
+
+
+
+//problem variant : 3
 class Solution {
     public List<List<Integer>> generate(int numRows) {
          List<List<Integer>> result = new ArrayList<>();
