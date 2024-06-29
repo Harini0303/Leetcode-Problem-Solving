@@ -57,3 +57,47 @@ class Solution {
         
     }
 }
+
+
+import java.util.*;
+public class Solution {
+    public static int[] spiralMatrix(int [][]matrix) {
+        // Write your code here.
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[] arr = new int[n*m];
+        
+        int top=0,left=0,right=m-1,bottom = n-1;
+
+        int index = 0;
+
+        while (top <= bottom && left <= right) {
+
+            for (int i = left; i <= right; i++) {
+                arr[index++] = matrix[top][i];
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                arr[index++] = matrix[i][right];
+            }
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    arr[index++] = matrix[bottom][i];
+                }
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    arr[index++] = matrix[i][left];
+                }
+                left++;
+            }
+        }
+
+        return arr;
+    }
+}
